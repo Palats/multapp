@@ -3,12 +3,49 @@
   <head>
     <link rel="stylesheet" href="bootstrap.min.css">
     <link rel="stylesheet" href="bootstrap-theme.min.css">
+    <link rel="stylesheet" href="angular-csp.css">
+    <link rel="stylesheet" href="app.css">
     <script type="text/javascript" src="angular.min.js"></script>
     <script type="text/javascript" src="app.js"></script>
   </head>
   <body>
-    <div ng-controller="MainCtrl as mainCtrl">
-      <div>{{mainCtrl.foo}}</div>
+    <div class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Multapp</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Add</a></li>
+          <li><a href="#multiplications">Multiply</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div ng-controller="MainCtrl as mainCtrl" class="container-fluid center-block">
+      <form name="valueForm">
+        <div class="row">
+          <div class="col-xs-12 mult-guess" ng-show="valueForm.result.$error.required">
+            <p class="text-center">What's the result?</p>
+          </div>
+          <div class="col-xs-12 mult-correct" ng-show="valueForm.result.$valid">
+            <p class="text-center">Correct!</p>
+          </div>
+          <div class="col-xs-12 mult-wrong" ng-show="valueForm.result.$invalid && !valueForm.result.$error.required">
+            <p class="text-center">Wrong :(</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+              <p class="text-center">
+                <span class="mult-value">{{mainCtrl.leftValue}}</span>
+                <span class="mult-op">{{mainCtrl.opSymbol}}</span>
+                <span class="mult-value">{{mainCtrl.rightValue}}</span>
+                <span class="mult-op">=</span>
+                <input type="text" ng-model="mainCtrl.result" ng-pattern="mainCtrl.resultPattern" name="result" class="mult-input has-feedback" size="2" required></input>
+              </p>
+          </div>
+        </div>
+      </form>
     </div>
   </body>
 </html>
