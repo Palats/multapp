@@ -22,7 +22,7 @@
     </div>
 
     <div ng-controller="MainCtrl as mainCtrl" class="container-fluid center-block">
-      <form name="valueForm">
+      <form name="valueForm" ng-submit="mainCtrl.newValues()">
         <div class="row">
           <div class="col-xs-12 mult-guess" ng-show="valueForm.result.$error.required">
             <p class="text-center">What's the result?</p>
