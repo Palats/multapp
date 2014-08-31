@@ -12,17 +12,6 @@
   width: 2em;
 }
 
-.mult-guess {
-  background-color: #6666DD;
-  color: white;
-}
-
-.mult-correct {
-  background-color: #66DD66;
-  color: white;
-}
-
-.mult-wrong {
-  background-color: #DD6666;
-  color: white;
+.mult-info-row {
+  margin-bottom: 1em;
 }

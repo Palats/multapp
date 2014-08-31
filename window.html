@@ -23,15 +23,15 @@
 
     <div ng-controller="MainCtrl as mainCtrl" class="container-fluid center-block">
       <form name="valueForm" ng-submit="mainCtrl.newValues()">
-        <div class="row">
-          <div class="col-xs-12 mult-guess" ng-show="valueForm.result.$error.required">
-            <p class="text-center">What's the result?</p>
+        <div class="row mult-info-row">
+          <div class="col-xs-12 bg-info text-center" ng-show="valueForm.result.$error.required">
+            What's the result?
           </div>
-          <div class="col-xs-12 mult-correct" ng-show="valueForm.result.$valid">
-            <p class="text-center">Correct!</p>
+          <div class="col-xs-12 bg-success text-center" ng-show="valueForm.result.$valid">
+            Correct!
           </div>
-          <div class="col-xs-12 mult-wrong" ng-show="valueForm.result.$invalid && !valueForm.result.$error.required">
-            <p class="text-center">Wrong :(</p>
+          <div class="col-xs-12 bg-danger text-center" ng-show="valueForm.result.$invalid && !valueForm.result.$error.required">
+            Wrong :(
           </div>
         </div>
         <div class="row">
