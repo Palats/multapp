@@ -14,7 +14,12 @@ mult.MainCtrl.prototype.newValues = function() {
   this.rightValue = this.randomValue();
   this.expected = this.leftValue + this.rightValue;
   this.opSymbol = '+';
-  this.resultPattern = new RegExp(this.expected.toString());
+  this.resultPattern = new RegExp("^" + this.expected.toString() + "$");
+};
+
+mult.MainCtrl.prototype.submitResult = function() {
+  console.log(this.resultPattern.test(this.result));
+  this.newValues();
 };
 
 mult.module = angular.module('mult.app', []);
