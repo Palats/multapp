@@ -23,14 +23,14 @@
 
     <div ng-controller="MainCtrl as mainCtrl" class="container-fluid center-block">
       <form name="valueForm" ng-submit="mainCtrl.submitResult()">
-        <div class="row mult-info-row">
-          <div class="col-xs-12 bg-info text-center" ng-show="valueForm.result.$valid && !mainCtrl.result">
+        <div class="row mult-info-row" ng-switch="mainCtrl.state">
+          <div class="col-xs-12 bg-info text-center" ng-switch-when="empty">
             What's the result?
           </div>
-          <div class="col-xs-12 bg-success text-center" ng-show="valueForm.result.$valid && !!mainCtrl.result">
+          <div class="col-xs-12 bg-success text-center" ng-switch-when="valid">
             Correct!
           </div>
-          <div class="col-xs-12 bg-danger text-center" ng-show="valueForm.result.$invalid">
+          <div class="col-xs-12 bg-danger text-center" ng-switch-when="invalid">
             Wrong :(
           </div>
         </div>
@@ -41,7 +41,14 @@
                 <span class="mult-op">{{mainCtrl.opSymbol}}</span>
                 <span class="mult-value">{{mainCtrl.rightValue}}</span>
                 <span class="mult-op">=</span>
-                <input type="text" ng-model="mainCtrl.result" ng-pattern="mainCtrl.resultPattern" name="result" class="mult-input" size="2"></input>
+                <input type="text"
+                    ng-model="mainCtrl.result"
+                    ng-change="mainCtrl.resultChange()"
+                    ng-pattern="mainCtrl.resultPattern"
+                    name="result"
+                    class="mult-input"
+                    size="2">
+                </input>
               </p>
           </div>
         </div>

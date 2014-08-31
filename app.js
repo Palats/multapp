@@ -16,6 +16,7 @@ mult.MainCtrl.prototype.newValues = function() {
   this.opSymbol = '+';
   this.resultPattern = new RegExp("^" + this.expected.toString() + "$");
   this.retry = false;
+  this.resultChange();
 };
 
 mult.MainCtrl.prototype.submitResult = function() {
@@ -24,6 +25,16 @@ mult.MainCtrl.prototype.submitResult = function() {
     return;
   }
   this.newValues();
+};
+
+mult.MainCtrl.prototype.resultChange = function() {
+  if (this.result === '') {
+    this.state = 'empty';
+  } else if (this.result == this.expected.toString()) {
+    this.state = 'valid';
+  } else {
+    this.state = 'invalid';
+  }
 };
 
 mult.module = angular.module('mult.app', []);
