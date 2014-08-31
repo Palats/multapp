@@ -15,10 +15,14 @@ mult.MainCtrl.prototype.newValues = function() {
   this.expected = this.leftValue + this.rightValue;
   this.opSymbol = '+';
   this.resultPattern = new RegExp("^" + this.expected.toString() + "$");
+  this.retry = false;
 };
 
 mult.MainCtrl.prototype.submitResult = function() {
-  console.log(this.resultPattern.test(this.result));
+  if (!this.resultPattern.test(this.result) && !this.retry) {
+    this.retry = true;
+    return;
+  }
   this.newValues();
 };
 
