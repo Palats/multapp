@@ -1,6 +1,6 @@
 {
-  "name": "Hello World!",
-  "description": "My first Chrome App.",
+  "name": "MultApp",
+  "description": "A toy chrome app + angular/bootstrap.",
   "version": "0.1",
   "manifest_version": 2,
   "offline_enabled": true,

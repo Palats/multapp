@@ -8,20 +8,20 @@
     <script type="text/javascript" src="angular.min.js"></script>
     <script type="text/javascript" src="app.js"></script>
   </head>
-  <body>
+  <body ng-controller="MainCtrl as mainCtrl">
     <div class="navbar navbar-default" role="navigation">
       <div class="container">
         <div class="navbar-header">
           <a class="navbar-brand" href="#">Multapp</a>
         </div>
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Add</a></li>
-          <li><a href="#multiplications">Multiply</a></li>
+          <li ng-class="{active: mainCtrl.mode=='add'}"><a href="#/add">Add</a></li>
+          <li ng-class="{active: mainCtrl.mode=='mul'}"><a href="#/mul">Multiply</a></li>
         </ul>
       </div>
     </div>
 
-    <div ng-controller="MainCtrl as mainCtrl" class="container-fluid center-block">
+    <div class="container-fluid center-block">
       <form name="valueForm" ng-submit="mainCtrl.submitResult()">
         <div class="row mult-info-row" ng-switch="mainCtrl.state">
           <div class="col-xs-12 bg-info text-center" ng-switch-when="empty">
