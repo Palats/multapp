@@ -15,3 +15,7 @@
 .mult-info-row {
   margin-bottom: 1em;
 }
+
+#mult-result-input {
+  width: 3.5ex;
+}
